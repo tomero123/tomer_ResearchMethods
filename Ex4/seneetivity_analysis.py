@@ -10,7 +10,7 @@ from sklearn.metrics import roc_curve, roc_auc_score
 from sklearn.model_selection import StratifiedKFold, cross_val_predict
 
 path = "C:\\university\\Semester C\\Research Methods\\Excercises\\Ex4\\CV_Results_20112019_FS_300\\"
-antibiotic = "ethambutol"
+antibiotic = "isoniazid"
 random_seed = 1
 k_folds = 10
 num_of_processes = 1
@@ -59,7 +59,7 @@ for fs_th in feature_selection_list:
     fpr, tpr, _ = roc_curve(y_true,  predictions)
     auc = roc_auc_score(y_true, predictions)
 
-    plt.plot(fpr, tpr, label="{}, AUC={:.3f}".format(model_name, auc))
+    plt.plot(fpr, tpr, label="FS threshold {}, AUC={:.3f}".format(fs_th, auc))
 
     np.random.shuffle(index_list_temp)
     index_list = np.array_split(index_list_temp, k_folds)
